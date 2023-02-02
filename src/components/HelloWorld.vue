@@ -13,15 +13,6 @@ defineProps({
     default: 13,
   },
 })
-
-const play = ref(true)
-// const playhandler = () => {
-//   const t = document.querySelector('audio')
-//   const tt = t.getAttributeNode('autoplay')
-//   if (tt) {
-//     t.removeAttribute('autoplay')
-//   } else t.setAttribute('autoplay', '')
-// }
 </script>
 
 <template>
@@ -38,9 +29,8 @@ const play = ref(true)
       <h2>{{ num }}</h2>
     </header>
     <main>
-      <audio :autoplay="play" />
       <div class="btn-wrap">
-        <button type="button" @click="play = !play">Change</button>
+        <button type="button" class="button button--colored">Change</button>
       </div>
     </main>
   </div>

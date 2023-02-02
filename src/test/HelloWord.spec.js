@@ -2,19 +2,16 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import HelloWorld from '../components/HelloWorld.vue'
 
-describe("HelloWorld.vue", () => {
+describe("HelloWorld", () => {
   it("renders props when passed", () => {
     const title = "Hello";
-    const nav = [];
-    const num = 13;
     const wrapper = mount(HelloWorld, {
-      props: { title, nav, num}
+      props: { title }
     });
-    expect(wrapper.text()).toMatch(title);
-    expect(wrapper.props()).toEqual({ title: 'Hello', nav: [], num: 13 })
-    expect(wrapper.vm.title).toMatch('Hello')
 
+    expect(wrapper.find('h1').text()).toMatch(title);
   });
+
   it("renders props where you want", () => {
     const title = "Hello";
     const wrapper = mount(HelloWorld, {
@@ -22,46 +19,53 @@ describe("HelloWorld.vue", () => {
     });
 
     expect(wrapper.find('h1').html()).toBe('<h1>Say Hello</h1>')
-  })
+  });
+
   it("what about Array?", () => {
     const wrapper = mount(HelloWorld, {
       props: { nav: ['First', 'Second'] }
     });
 
-    const secondA = wrapper.findAll('a').at(1)
+    const arr = wrapper.findAll('a')
+    const firstItem = wrapper.findAll('a').at(0)
+    const secondItem = wrapper.findAll('a').at(1)
 
-    expect(secondA.text()).toBe('Second')
+    expect(arr).toHaveLength(2)
+    expect(firstItem.text()).toBe('First')
+    expect(secondItem.text()).toBe('Second')
   })
 
   it("What if I change prop?", async() => {
     const wrapper = mount(HelloWorld, {
       props: { num: 13 }
     });
+    const h2 = wrapper.find('h2')
 
-    expect(wrapper.html()).toContain('13')
+    expect(h2.text()).toContain(13)
 
     await wrapper.setProps({ num: 999 })
 
-    expect(wrapper.html()).toContain(999)
+    expect(h2.text()).toContain(999)
+  })
 
+  it('Lets look at attrs', () => {
+    const wrapper = mount(HelloWorld, {
+      attrs: {
+        type: "button"
+      }
+    })
+
+    expect(wrapper.find('button').attributes()).toContain({
+      type: "button"
+    })
+  })
+
+  it('Lets look at classes', () => {
+    const wrapper = mount(HelloWorld)
+    const btn = wrapper.find('.button');
+
+    expect(btn.classes()).toContain('button')
+    expect(btn.classes('button')).toBe(true)
+    expect(btn.classes('not-existing')).toBe(false)
   })
 });
-
-
-describe("Attrs Part", () => {
-  it('attrs', async() => {
-    const wrapper = mount(HelloWorld, {
-    attrs: {
-      autoplay: ""
-    }
-  })
-
-  expect(wrapper.find('audio').attributes()).toContain({
-    autoplay: ""
-  })
-  
-  await wrapper.find('button').trigger('click')
-
-  expect(wrapper.find('audio').attributes()).not.toContain({ autoplay: "" })
-})
-})
