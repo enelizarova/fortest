@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import HelloWorld from '../components/HelloWorld.vue'
+import MyLayout from '../MyLayout.vue'
 
-describe("HelloWorld", () => {
+describe("MyLayout", () => {
   it("renders props when passed", () => {
     const title = "Hello";
-    const wrapper = mount(HelloWorld, {
+    const wrapper = mount(MyLayout, {
       props: { title }
     });
 
@@ -13,7 +13,7 @@ describe("HelloWorld", () => {
   });
 
   it("what about Array?", () => {
-    const wrapper = mount(HelloWorld, {
+    const wrapper = mount(MyLayout, {
       props: { nav: ['First', 'Second'] }
     });
 
@@ -27,7 +27,7 @@ describe("HelloWorld", () => {
   })
 
   it("What if I change prop?", async() => {
-    const wrapper = mount(HelloWorld, {
+    const wrapper = mount(MyLayout, {
       props: { num: 13 }
     });
     const h2 = wrapper.find('h2')
@@ -40,7 +40,7 @@ describe("HelloWorld", () => {
   })
 
   it('Lets look at attrs & classes', () => {
-    const wrapper = mount(HelloWorld, {
+    const wrapper = mount(MyLayout, {
       attrs: {
         id: "hello",
         class: "world"
