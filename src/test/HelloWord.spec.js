@@ -39,22 +39,15 @@ describe("HelloWorld", () => {
     expect(h2.text()).toContain('999')
   })
 
-  it('Lets look at attrs', () => {
+  it('Lets look at attrs & classes', () => {
     const wrapper = mount(HelloWorld, {
       attrs: {
-        type: "button"
+        id: "hello",
+        class: "world"
       }
     })
 
-    expect(wrapper.find('button').attributes()).toContain({
-      type: "button"
-    })
-  })
-
-  it('Lets look at classes', () => {
-    const wrapper = mount(HelloWorld)
-    const btn = wrapper.find('.button');
-
-    expect(btn.classes()).toContain('button')
+    expect(wrapper.find('.lay').attributes('id')).toBe('hello')
+    expect(wrapper.find('.lay').classes('world')).toBe(true)
   })
 });

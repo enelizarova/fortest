@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="lay bg">
+  <div class="lay bg" id="test">
     <header>
       <nav class="">
         <ul class="grid gap-6">
