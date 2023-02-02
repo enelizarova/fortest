@@ -32,11 +32,11 @@ describe("HelloWorld", () => {
     });
     const h2 = wrapper.find('h2')
 
-    expect(h2.text()).toContain(13)
+    expect(h2.text()).toContain('13')
 
     await wrapper.setProps({ num: 999 })
 
-    expect(h2.text()).toContain(999)
+    expect(h2.text()).toContain('999')
   })
 
   it('Lets look at attrs', () => {
