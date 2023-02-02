@@ -1,0 +1,103 @@
+
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+.lay.bg {
+  min-height: 100vh;
+  padding: 25vh 0 1.5rem;
+}
+
+.lay h1 {
+  text-align: center;
+  margin: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-mask-image: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      color-stop(0, #000),
+      color-stop(0.5, #000),
+      color-stop(1, transparent));
+  text-align: center;
+  font-size: calc(15vw + 1rem);
+  font-weight: 600;
+  line-height: 1;
+  background-image: linear-gradient(90deg,
+      rgba(60, 111, 208, 1) 0%,
+      rgba(153, 84, 181, 1) 18%,
+      rgba(70, 191, 77, 1) 49%,
+      rgba(200, 122, 68, 1) 75%,
+      rgba(191, 208, 60, 1) 100%);
+  background-size: 200% auto;
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
+
+.lay nav {
+  position: fixed;
+  top: var(--border-width);
+  left: var(--border-width);
+  z-index: 10;
+}
+
+.lay nav ul {
+  list-style: none;
+  display: flex;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.lay nav li {
+  flex: 1 0 7.5rem;
+}
+
+.lay nav a {
+  display: block;
+  padding: 0.75rem 0 0.5rem;
+  color: #7360c0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.lay nav a.router-link-active.router-link-exact-active {
+  color: #45338a;
+}
+
+.lay nav .link-projects {
+  color: #231f20;
+}
+
+.lay main {
+  position: relative;
+  max-width: 36rem;
+  padding: 0 1.5rem;
+  margin: -0 auto;
+  font-size: 2rem;
+}
+
+.lay .slide-fade-enter-active {
+  transition: all 1s ease;
+}
+
+.lay .slide-fade-leave-active {
+  transition: all 0.5s;
+}
+
+.lay .slide-fade-enter,
+.lay .slide-fade-leave-to {
+  transform: translateY(2rem);
+  opacity: 0;
+}

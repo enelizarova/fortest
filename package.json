@@ -1,0 +1,21 @@
+{
+  "name": "fortest",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "jsdom": "^21.1.0",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.2.8",
+    "vite": "^4.0.0",
+    "vitest": "^0.28.3"
+  }
+}
