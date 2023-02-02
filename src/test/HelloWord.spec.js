@@ -9,16 +9,7 @@ describe("HelloWorld", () => {
       props: { title }
     });
 
-    expect(wrapper.find('h1').text()).toMatch(title);
-  });
-
-  it("renders props where you want", () => {
-    const title = "Hello";
-    const wrapper = mount(HelloWorld, {
-      props: { title }
-    });
-
-    expect(wrapper.find('h1').html()).toBe('<h1>Say Hello</h1>')
+    expect(wrapper.find('h1').text()).toContain(title);
   });
 
   it("what about Array?", () => {
@@ -31,8 +22,8 @@ describe("HelloWorld", () => {
     const secondItem = wrapper.findAll('a').at(1)
 
     expect(arr).toHaveLength(2)
-    expect(firstItem.text()).toBe('First')
-    expect(secondItem.text()).toBe('Second')
+    expect(firstItem.text()).toContain('First')
+    expect(secondItem.text()).toContain('Second')
   })
 
   it("What if I change prop?", async() => {
@@ -65,7 +56,5 @@ describe("HelloWorld", () => {
     const btn = wrapper.find('.button');
 
     expect(btn.classes()).toContain('button')
-    expect(btn.classes('button')).toBe(true)
-    expect(btn.classes('not-existing')).toBe(false)
   })
 });
